@@ -58,6 +58,10 @@ module "ecs_cluster" {
   }
 }
 
-output "module_output" {
-  value = module.ecs_cluster
+output "http_response" {
+  value = module.ecs_cluster.response
+}
+
+output "http_status" {
+  value = module.ecs_cluster.status
 }

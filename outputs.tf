@@ -3,17 +3,26 @@ output "local_config" {
 }
 
 output "sigv4_config" {
-  value = data.aws_lambda_invocation.sigv4
+  value = { for k, v in data.aws_lambda_invocation.sigv4 : k => v }
 }
 
 output "status_code" {
-  value = terracurl_request.create_and_destroy
+  value = flatten([
+    for k, v in terracurl_request.create_and_destroy : [
+    for d, value in v : { "${k}" = value } if d == "status_code"]
+  ])
 }
 
 output "request_url" {
-  value = terracurl_request.create_and_destroy
+  value = [
+    for k, v in terracurl_request.create_and_destroy : [
+    for d, value in v : { "${k}" = value } if d == "request_url_string"]
+  ]
 }
 
 output "response" {
-  value = terracurl_request.create_and_destroy
+  value = flatten([
+    for k, v in terracurl_request.create_and_destroy : [
+    for d, value in v : { "${k}" = value } if d == "response"]
+  ])
 }

@@ -12,8 +12,8 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
-| <a name="provider_terracurl"></a> [terracurl](#provider\_terracurl) | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.58.0 |
+| <a name="provider_terracurl"></a> [terracurl](#provider\_terracurl) | 1.0.2 |
 
 ## Modules
 
@@ -24,7 +24,6 @@ No modules.
 | Name | Type |
 |------|------|
 | [terracurl_request.create_and_destroy](https://registry.terraform.io/providers/devops-rob/terracurl/latest/docs/resources/request) | resource |
-| [terracurl_request.modify](https://registry.terraform.io/providers/devops-rob/terracurl/latest/docs/resources/request) | resource |
 | [aws_lambda_invocation.sigv4](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/lambda_invocation) | data source |
 
 ## Inputs

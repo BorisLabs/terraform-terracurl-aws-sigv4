@@ -34,6 +34,7 @@ resource "terracurl_request" "create_and_destroy" {
   request_body       = jsondecode(data.aws_lambda_invocation.sigv4["${each.key}_create"].result)["data"]
   request_parameters = jsondecode(data.aws_lambda_invocation.sigv4["${each.key}_create"].result)["request_params"]
 
+
   destroy_url          = local.sigv4_config[each.key]["destroy"]["url"]
   destroy_method       = local.sigv4_config[each.key]["create"]["method"]
   destroy_headers      = jsondecode(data.aws_lambda_invocation.sigv4["${each.key}_destroy"].result)["headers"]
@@ -43,22 +44,6 @@ resource "terracurl_request" "create_and_destroy" {
   destroy_response_codes = [200, 400, 403]
 
   lifecycle {
-    ignore_changes = [
-      all
-    ]
+    ignore_changes = all
   }
-}
-
-resource "terracurl_request" "modify" {
-  for_each = toset(keys(local.sigv4_config))
-
-  name   = each.key
-  url    = local.sigv4_config[each.key]["modify"]["url"]
-  method = local.sigv4_config[each.key]["modify"]["method"]
-
-  headers        = jsondecode(data.aws_lambda_invocation.sigv4["${each.key}_modify"].result)["headers"]
-  response_codes = [200, 400, 403]
-
-  request_body       = jsondecode(data.aws_lambda_invocation.sigv4["${each.key}_modify"].result)["data"]
-  request_parameters = jsondecode(data.aws_lambda_invocation.sigv4["${each.key}_modify"].result)["request_params"]
 }
