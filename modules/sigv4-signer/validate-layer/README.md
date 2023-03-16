@@ -1,0 +1,1 @@
+You can run this terraform code to validate that the built layer is working as expected. Could be invoked via `terratest` at a later date.

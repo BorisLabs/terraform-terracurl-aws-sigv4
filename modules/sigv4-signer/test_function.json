@@ -1,0 +1,15 @@
+{
+    "method": "POST",
+    "service": "ecs",
+    "region": "eu-wst-1",
+    "url": "https://ecs.eu-west-1.amazonaws.com",
+    "headers": {
+        "Accept-Encoding": "identity"
+    },
+    "params": {
+        "Action": "CreateCluster"
+    },
+    "data": {
+        "clusterName": "PythonCluster"
+    }
+}

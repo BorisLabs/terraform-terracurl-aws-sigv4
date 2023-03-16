@@ -63,5 +63,5 @@ output "http_response" {
 }
 
 output "http_status" {
-  value = module.ecs_cluster.status
+  value = module.ecs_cluster.status_code
 }

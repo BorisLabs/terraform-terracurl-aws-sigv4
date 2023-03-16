@@ -1,7 +1,12 @@
 ***NOTE Work in progress ***
 
 # terraform-terracurl-aws-sigv4-
-Terraform module for AWS API SIGV4 interaction(s).
+Terraform module that uses the AWS & terracurl provider. It allows you to interact with the AWS APIs nativley in terraform.
+
+### Use case:
+When the AWS provider doesn't support an AWS Service or provider as missing functionality, you can still interact with AWS using the terracurl provider.
+
+This module uses a lambda function to generate the required SIGV4 signature & then use the terracurl provider to call the AWS APIs.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
