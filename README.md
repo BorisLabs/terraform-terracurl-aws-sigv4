@@ -1,6 +1,6 @@
 ***NOTE Work in progress ***
 
-# terraform-terracurl-aws-sigv4-
+# terraform-terracurl-aws-sigv4
 Terraform module that uses the AWS & terracurl provider. It allows you to interact with the AWS APIs nativley in terraform.
 
 ### Use case:

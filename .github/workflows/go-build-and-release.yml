@@ -2,7 +2,7 @@ name: Build and Release a Version
 on:
   push:
     branches:
-      - master
+      - main
 
 
 jobs:
@@ -16,7 +16,7 @@ jobs:
         uses: cycjimmy/semantic-release-action@v3.0.0
         id: semantic
         with:
-          branch: master
+          branch: main
           extra_plugins: |
             @semantic-release/git
             @semantic-release/changelog
