@@ -11,7 +11,9 @@ This module uses a lambda function to generate the required SIGV4 signature & th
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terracurl"></a> [terracurl](#requirement\_terracurl) | 1.0.1 |
 
 ## Providers
 
@@ -28,7 +30,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [terracurl_request.create_and_destroy](https://registry.terraform.io/providers/devops-rob/terracurl/latest/docs/resources/request) | resource |
+| [terracurl_request.create_and_destroy](https://registry.terraform.io/providers/devops-rob/terracurl/1.0.1/docs/resources/request) | resource |
 | [aws_lambda_invocation.sigv4](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/lambda_invocation) | data source |
 
 ## Inputs
