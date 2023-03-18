@@ -1,26 +1,26 @@
 ***NOTE Work in progress ***
 
 # terraform-terracurl-aws-sigv4
-Terraform module that uses the AWS & terracurl provider. It allows you to interact with the AWS APIs nativley in terraform.
+Terraform module that uses the AWS & terracurl providers, it allows you to interact with the AWS APIs nativley in terraform.
 
 ### Use case:
-When the AWS provider doesn't support an AWS Service or provider as missing functionality, you can still interact with AWS using the terracurl provider.
+When the AWS provider doesn't support an AWS Service or as missing functionality, you can still interact with AWS using the terracurl provider.
 
-This module uses a lambda function to generate the required SIGV4 signature & then use the terracurl provider to call the AWS APIs.
+This module uses a lambda function to generate the required SIGV4 signature & then uses the terracurl provider to call the AWS APIs.
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terracurl"></a> [terracurl](#requirement\_terracurl) | 1.0.1 |
+| <a name="requirement_terracurl"></a> [terracurl](#requirement\_terracurl) | 1.1.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.58.0 |
-| <a name="provider_terracurl"></a> [terracurl](#provider\_terracurl) | 1.0.2 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.59.0 |
+| <a name="provider_terracurl"></a> [terracurl](#provider\_terracurl) | 1.1.0 |
 
 ## Modules
 
@@ -30,7 +30,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [terracurl_request.create_and_destroy](https://registry.terraform.io/providers/devops-rob/terracurl/1.0.1/docs/resources/request) | resource |
+| [terracurl_request.create_and_destroy](https://registry.terraform.io/providers/devops-rob/terracurl/1.1.0/docs/resources/request) | resource |
 | [aws_lambda_invocation.sigv4](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/lambda_invocation) | data source |
 
 ## Inputs
