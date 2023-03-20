@@ -1,5 +1,12 @@
 All notable changes to this terraform will be documented in this file.
 
+## [1.0.3](https://github.com/BorisLabs/terraform-terracurl-aws-sigv4/compare/v1.0.2...v1.0.3) (2023-03-20)
+
+
+### Bug Fixes
+
+* src path on signer lambda ([6e0234e](https://github.com/BorisLabs/terraform-terracurl-aws-sigv4/commit/6e0234e1bcb79effd79337a49e35baae5aaad930))
+
 ## [1.0.2](https://github.com/BorisLabs/terraform-terracurl-aws-sigv4/compare/v1.0.1...v1.0.2) (2023-03-18)
 
 
