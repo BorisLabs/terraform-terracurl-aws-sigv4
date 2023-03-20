@@ -1,6 +1,6 @@
 variable "lambda_sigv4_name" {
   description = "Name of the lambda function that will return the Sigv4 headers"
-  default     = "sigv4-with-layer"
+  default     = "aws-lambda-signer"
 
   type = string
 }

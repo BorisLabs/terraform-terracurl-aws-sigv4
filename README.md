@@ -13,7 +13,8 @@ This module uses a lambda function to generate the required SIGV4 signature & th
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terracurl"></a> [terracurl](#requirement\_terracurl) | 1.1.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.59.0 |
+| <a name="requirement_terracurl"></a> [terracurl](#requirement\_terracurl) | >= 1.1.0 |
 
 ## Providers
 
@@ -30,14 +31,14 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [terracurl_request.create_and_destroy](https://registry.terraform.io/providers/devops-rob/terracurl/1.1.0/docs/resources/request) | resource |
+| [terracurl_request.create_and_destroy](https://registry.terraform.io/providers/devops-rob/terracurl/latest/docs/resources/request) | resource |
 | [aws_lambda_invocation.sigv4](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/lambda_invocation) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_lambda_sigv4_name"></a> [lambda\_sigv4\_name](#input\_lambda\_sigv4\_name) | Name of the lambda function that will return the Sigv4 headers | `string` | `"sigv4-with-layer"` | no |
+| <a name="input_lambda_sigv4_name"></a> [lambda\_sigv4\_name](#input\_lambda\_sigv4\_name) | Name of the lambda function that will return the Sigv4 headers | `string` | `"aws-lambda-signer"` | no |
 | <a name="input_sigv4_config"></a> [sigv4\_config](#input\_sigv4\_config) | Map of request configuration, must contain create & destroy maps | `map(any)` | <pre>{<br>  "request_1": {<br>    "create": {},<br>    "destroy": {}<br>  }<br>}</pre> | no |
 | <a name="input_sigv4_modify_config"></a> [sigv4\_modify\_config](#input\_sigv4\_modify\_config) | Map of request configuration for to modify resources | `map(any)` | <pre>{<br>  "request_1": {<br>    "modify": {}<br>  }<br>}</pre> | no |
 

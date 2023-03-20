@@ -50,6 +50,6 @@ module "sigv4_lambda" {
   ]
 
   source_path = [{
-    path = "src/"
+    path = "${path.module}/src/"
   }]
 }
