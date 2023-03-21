@@ -2,6 +2,10 @@ provider "aws" {
   region = "eu-west-1"
 }
 
+locals {
+  iam_configuration = var.iam_config
+}
+
 module "build_sigv4_botocore_layer" {
   source  = "terraform-aws-modules/lambda/aws"
   version = "4.10.1"
@@ -37,8 +41,13 @@ module "sigv4_lambda" {
   handler       = "lambda_handler.lambda_handler"
 
   create_role = true
-  role_name   = "layer-validator"
-  policy_name = "layer-policy"
+
+  role_name   = var.iam_role_name
+  policy_name = var.iam_policy_name
+
+  attach_policy_jsons    = var.json_attach_policies
+  policy_jsons           = var.json_policies
+  number_of_policy_jsons = var.json_policy_count
 
   compatible_runtimes = [var.layer_runtime]
   runtime             = var.layer_runtime # required to force layers to do pip install

@@ -5,18 +5,10 @@ provider "aws" {
 provider "terracurl" {
 }
 
-terraform {
-  required_providers {
-    terracurl = {
-      source = "devops-rob/terracurl"
-    }
-  }
-}
-
 module "iam_group" {
   source = "../../"
 
-  sigv4_config = {
+  awsaws_request_config = {
     terraform_group = {
       create = {
         mode    = "create"

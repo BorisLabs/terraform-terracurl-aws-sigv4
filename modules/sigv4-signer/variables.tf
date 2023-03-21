@@ -47,3 +47,45 @@ variable "function_name" {
   type = string
 }
 
+variable "iam_role_name" {
+  description = "Name of the IAM role that's created"
+  default     = "aws-sigv4-lambda-role"
+
+
+  type = string
+}
+
+variable "iam_policy_name" {
+  description = "Name of the IAM Policy to create & attach to the role"
+  default     = "aws-sigv4-lambda-policy"
+
+  type = string
+}
+
+variable "iam_config" {
+  description = "Map of IAM Config to apply to lambda function"
+  default     = {}
+
+  type = map(string)
+}
+
+variable "json_attach_policies" {
+  description = "Attach JSON IAM Policies"
+  default     = false
+
+  type = bool
+}
+
+variable "json_policies" {
+  description = "List of JSON Policies to attach"
+  default     = []
+
+  type = list(string)
+}
+
+variable "json_policy_count" {
+  description = "Count of number of policies in json_policies"
+  default     = 0
+
+  type = number
+}

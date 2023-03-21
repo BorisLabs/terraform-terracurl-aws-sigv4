@@ -38,9 +38,9 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_lambda_sigv4_name"></a> [lambda\_sigv4\_name](#input\_lambda\_sigv4\_name) | Name of the lambda function that will return the Sigv4 headers | `string` | `"aws-lambda-signer"` | no |
-| <a name="input_sigv4_config"></a> [sigv4\_config](#input\_sigv4\_config) | Map of request configuration, must contain create & destroy maps | `map(any)` | <pre>{<br>  "request_1": {<br>    "create": {},<br>    "destroy": {}<br>  }<br>}</pre> | no |
-| <a name="input_sigv4_modify_config"></a> [sigv4\_modify\_config](#input\_sigv4\_modify\_config) | Map of request configuration for to modify resources | `map(any)` | <pre>{<br>  "request_1": {<br>    "modify": {}<br>  }<br>}</pre> | no |
+| <a name="input_aws_request_config"></a> [aws\_request\_config](#input\_aws\_request\_config) | Map of request configuration, needs to contain create & destroy keys | `map(any)` | <pre>{<br>  "request_1": {<br>    "create": {},<br>    "destroy": {}<br>  }<br>}</pre> | no |
+| <a name="input_lambda_function_name"></a> [lambda\_function\_name](#input\_lambda\_function\_name) | Name of the lambda function that will return the Sigv4 headers | `string` | `"aws-lambda-signer"` | no |
+| <a name="input_sigv4_modify_config"></a> [sigv4\_modify\_config](#input\_sigv4\_modify\_config) | Map of request configuration to modify resources | `map(any)` | <pre>{<br>  "request_1": {<br>    "modify": {}<br>  }<br>}</pre> | no |
 
 ## Outputs
 

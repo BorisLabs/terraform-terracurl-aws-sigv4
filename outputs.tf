@@ -1,5 +1,5 @@
 output "local_config" {
-  value = local.sigv4_config
+  value = local.config
 }
 
 output "sigv4_config" {
