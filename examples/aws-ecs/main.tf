@@ -16,7 +16,7 @@ terraform {
 module "ecs_cluster" {
   source = "../../"
 
-  sigv4_config = {
+  aws_request_config = {
     ecs_cluster = {
       create = {
         mode    = "create"
