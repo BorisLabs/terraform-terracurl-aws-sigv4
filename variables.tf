@@ -6,7 +6,7 @@ variable "lambda_function_name" {
 }
 
 variable "aws_request_config" {
-  description = "Map of request configuration, needs to contain create & destroy keys"
+  description = "Map of request configuration, needs to contain create keys as a minimum. Destroy keys dont need to be included, however this will leave orphaned resources"
 
   type = map(any)
 

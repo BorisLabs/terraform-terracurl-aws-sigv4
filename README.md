@@ -38,7 +38,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_aws_request_config"></a> [aws\_request\_config](#input\_aws\_request\_config) | Map of request configuration, needs to contain create & destroy keys | `map(any)` | <pre>{<br>  "request_1": {<br>    "create": {},<br>    "destroy": {}<br>  }<br>}</pre> | no |
+| <a name="input_aws_request_config"></a> [aws\_request\_config](#input\_aws\_request\_config) | Map of request configuration, needs to contain create keys as a minimum. Destroy keys dont need to be included, however this will leave orphaned resources | `map(any)` | <pre>{<br>  "request_1": {<br>    "create": {},<br>    "destroy": {}<br>  }<br>}</pre> | no |
 | <a name="input_lambda_function_name"></a> [lambda\_function\_name](#input\_lambda\_function\_name) | Name of the lambda function that will return the Sigv4 headers | `string` | `"aws-lambda-signer"` | no |
 
 ## Outputs
