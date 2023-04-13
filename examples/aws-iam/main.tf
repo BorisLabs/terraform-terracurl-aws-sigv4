@@ -5,49 +5,63 @@ provider "aws" {
 provider "terracurl" {
 }
 
+terraform {
+  required_providers {
+    terracurl = {
+      source = "devops-rob/terracurl"
+    }
+  }
+}
+
 module "iam_group" {
   source = "../../"
 
-  awsaws_request_config = {
-    terraform_group = {
+  aws_request_config = [
+    {
+      name    = "TerraformGroup"
+      service = "iam"
+      region  = "us-east-1"
+      method  = "POST"
+      url     = "https://iam.amazonaws.com"
       create = {
-        mode    = "create"
-        service = "iam"
-        region  = "us-east-1"
-        method  = "POST"
-        url     = "https://iam.amazonaws.com"
-        headers = {}
-        data    = {}
+        response_codes = [200, 403, 404]
+        method         = "POST"
+        headers = {
+          Content-Type = "application/x-amz-json-1.1"
+        }
+        data = {}
         params = {
           Action    = "CreateGroup",
           GroupName = "TerraformGroup",
           Version   = "2010-05-08"
+
         }
       }
       destroy = {
-        mode    = "destroy"
-        service = "iam"
-        region  = "us-east-1"
         method  = "POST"
-        url     = "https://iam.amazonaws.com"
         headers = {}
-        data    = {}
+        data = {
+          Content-Type = "application/x-amz-json-1.1"
+        }
         params = {
           Action    = "DeleteGroup",
           GroupName = "TerraformGroup",
           Version   = "2010-05-08"
         }
       }
-    }
-    ecs_group = {
+    },
+    {
+      name    = "ecs_group"
+      service = "iam"
+      region  = "us-east-1"
+      url     = "https://iam.amazonaws.com"
       create = {
-        mode    = "create"
-        service = "iam"
-        region  = "us-east-1"
-        method  = "POST"
-        url     = "https://iam.amazonaws.com"
-        headers = {}
-        data    = {}
+        method         = "POST"
+        response_codes = [200, 403, 404]
+        headers = {
+          Content-Type = "application/x-amz-json-1.1"
+        }
+        data = {}
         params = {
           Action    = "CreateGroup",
           GroupName = "ECSGroup",
@@ -55,13 +69,11 @@ module "iam_group" {
         }
       }
       destroy = {
-        mode    = "destroy"
-        service = "iam"
-        region  = "us-east-1"
-        method  = "POST"
-        url     = "https://iam.amazonaws.com"
-        headers = {}
-        data    = {}
+        method = "POST"
+        headers = {
+          Content-Type = "application/x-amz-json-1.1"
+        }
+        data = {}
         params = {
           Action    = "DeleteGroup",
           GroupName = "ECSGroup",
@@ -69,7 +81,7 @@ module "iam_group" {
         }
       }
     }
-  }
+  ]
 }
 
 output "response" {
@@ -78,10 +90,6 @@ output "response" {
 
 output "request_url" {
   value = module.iam_group.request_url
-}
-
-output "signed_response" {
-  value = module.iam_group.sigv4_config
 }
 
 output "status_code" {

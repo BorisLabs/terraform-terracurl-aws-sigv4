@@ -2,7 +2,7 @@
 **/.terraform/*
 **.terraform.lock.hcl
 **/builds/*
-
+.infracost
 # .tfstate files
 *.tfstate
 *.tfstate.*

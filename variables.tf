@@ -6,14 +6,27 @@ variable "lambda_function_name" {
 }
 
 variable "aws_request_config" {
-  description = "Map of request configuration, needs to contain create keys as a minimum. Destroy keys dont need to be included, however this will leave orphaned resources"
+  description = "List object with details of Configuration paramters"
+  default     = []
 
-  type = map(any)
-
-  default = {
-    request_1 = {
-      create  = {}
-      destroy = {}
-    }
-  }
+  type = list(object({
+    name    = string
+    url     = string
+    region  = string
+    service = string
+    create = object({
+      response_codes = list(string)
+      method         = optional(string)
+      headers        = optional(map(string))
+      params         = optional(map(string))
+      data           = optional(map(string))
+    })
+    destroy = optional(object({
+      response_codes = optional(list(string))
+      method         = optional(string)
+      headers        = optional(map(string))
+      params         = optional(map(string))
+      data           = optional(map(string))
+    }))
+  }))
 }

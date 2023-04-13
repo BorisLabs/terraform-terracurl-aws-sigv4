@@ -1,11 +1,3 @@
-output "local_config" {
-  value = local.config
-}
-
-output "sigv4_config" {
-  value = { for k, v in data.aws_lambda_invocation.sigv4 : k => v }
-}
-
 output "status_code" {
   value = flatten([
     for k, v in terracurl_request.create_and_destroy : [

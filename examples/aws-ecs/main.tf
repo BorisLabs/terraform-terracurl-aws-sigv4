@@ -16,52 +16,49 @@ terraform {
 module "ecs_cluster" {
   source = "../../"
 
-  aws_request_config = {
-    ecs_cluster = {
+  lambda_function_name = "aws-lambda-signer"
+
+  aws_request_config = [
+    {
+      name    = "ecs-cluster"
+      service = "ecs"
+      region  = "eu-west-1"
+      url     = "https://ecs.eu-west-1.amazonaws.com"
       create = {
-        mode    = "create"
-        service = "ecs"
-        region  = "eu-west-1"
-        method  = "POST"
-        url     = "https://ecs.eu-west-1.amazonaws.com"
+        response_codes = [200, 400, 403]
+        method         = "POST"
         headers = {
           Accept-Encoding = "identity"
           Content-Type    = "application/x-amz-json-1.1"
           X-Amz-Target    = "AmazonEC2ContainerServiceV20141113.CreateCluster"
         }
         data = {
-          "clusterName" = "RobsClusterAPI"
+          "clusterName" = "RobsClusterAPI-v2"
         }
         params = {
           "Action" = "CreateCluster"
         }
       }
       destroy = {
-        mode    = "destroy"
-        service = "ecs"
-        region  = "eu-west-1"
-        method  = "POST"
-        url     = "https://ecs.eu-west-1.amazonaws.com"
+        response_codes = [200, 400, 403]
+        method         = "POST"
         headers = {
           Accept-Encoding = "identity"
           Content-Type    = "application/x-amz-json-1.1"
           X-Amz-Target    = "AmazonEC2ContainerServiceV20141113.DeleteCluster"
         }
         data = {
-          "cluster" = "RobsClusterAPI"
+          "cluster" = "RobsClusterAPI-v2"
         }
         params = {
           "Action" = "DeleteCluster"
         }
       }
     }
-  }
+  ]
 }
 
-output "http_response" {
-  value = module.ecs_cluster.response
-}
 
-output "http_status" {
-  value = module.ecs_cluster.status_code
+output "request" {
+  value = module.ecs_cluster
 }
