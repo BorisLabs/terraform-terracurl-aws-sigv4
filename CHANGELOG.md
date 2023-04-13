@@ -1,5 +1,12 @@
 All notable changes to this terraform will be documented in this file.
 
+## [1.0.6](https://github.com/BorisLabs/terraform-terracurl-aws-sigv4/compare/v1.0.5...v1.0.6) (2023-04-13)
+
+
+### Bug Fixes
+
+* Various code refactors ([9f4985e](https://github.com/BorisLabs/terraform-terracurl-aws-sigv4/commit/9f4985e987892f77dc874f6d81a63bdbec1638ba))
+
 ## [1.0.5](https://github.com/BorisLabs/terraform-terracurl-aws-sigv4/compare/v1.0.4...v1.0.5) (2023-03-21)
 
 
