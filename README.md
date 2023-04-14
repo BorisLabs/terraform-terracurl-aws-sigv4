@@ -38,16 +38,14 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_aws_request_config"></a> [aws\_request\_config](#input\_aws\_request\_config) | Map of request configuration, needs to contain create keys as a minimum. Destroy keys dont need to be included, however this will leave orphaned resources | `map(any)` | <pre>{<br>  "request_1": {<br>    "create": {},<br>    "destroy": {}<br>  }<br>}</pre> | no |
+| <a name="input_aws_request_config"></a> [aws\_request\_config](#input\_aws\_request\_config) | List object with details of Configuration paramters | <pre>list(object({<br>    name    = string<br>    url     = string<br>    region  = string<br>    service = string<br>    create = object({<br>      response_codes = list(string)<br>      method         = optional(string)<br>      headers        = optional(map(string))<br>      params         = optional(map(string))<br>      data           = optional(map(string))<br>    })<br>    destroy = optional(object({<br>      response_codes = optional(list(string))<br>      method         = optional(string)<br>      headers        = optional(map(string))<br>      params         = optional(map(string))<br>      data           = optional(map(string))<br>    }))<br>  }))</pre> | `[]` | no |
 | <a name="input_lambda_function_name"></a> [lambda\_function\_name](#input\_lambda\_function\_name) | Name of the lambda function that will return the Sigv4 headers | `string` | `"aws-lambda-signer"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_local_config"></a> [local\_config](#output\_local\_config) | n/a |
 | <a name="output_request_url"></a> [request\_url](#output\_request\_url) | n/a |
 | <a name="output_response"></a> [response](#output\_response) | n/a |
-| <a name="output_sigv4_config"></a> [sigv4\_config](#output\_sigv4\_config) | n/a |
 | <a name="output_status_code"></a> [status\_code](#output\_status\_code) | n/a |
 <!-- END_TF_DOCS -->
